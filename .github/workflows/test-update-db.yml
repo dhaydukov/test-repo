@@ -1,0 +1,14 @@
+name: test-update-db
+
+on:
+  push:
+    branches:
+      - main
+	  
+jobs:
+  update-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repo
+      - uses: actions/checkout@main
