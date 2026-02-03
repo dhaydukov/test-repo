@@ -12,3 +12,7 @@ jobs:
     steps:
       # Check out the repo
       - uses: actions/checkout@main
+      - name: List repository files
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse -Depth 4 | Select-Object FullName
