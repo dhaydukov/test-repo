@@ -18,13 +18,13 @@ jobs:
       #  run: |
       #    Get-ChildItem -Recurse -Depth 4 | Select-Object FullName
       
-      - name: Run EXE from specific folder
+      - name: Run UpdateDB
         shell: pwsh
         run: |
-          $exePath = Join-Path $env:GITHUB_WORKSPACE "Tools\FFmpeg\ffmpeg.exe"
+          $exePath = Join-Path $env:GITHUB_WORKSPACE "Tools\UpdateDB\UpdateDB.exe"
           if (-not (Test-Path $exePath)) {
-            throw "EXE not found at: $exePath"
+            throw "UpdateDB.exe not found at: $exePath"
           }
           
-          & $exePath -h
+          & $exePath
           
