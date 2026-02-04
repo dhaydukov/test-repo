@@ -12,7 +12,19 @@ jobs:
     steps:
       # Check out the repo
       - uses: actions/checkout@main
-      - name: List repository files
+      
+      #- name: List repository files
+      #  shell: pwsh
+      #  run: |
+      #    Get-ChildItem -Recurse -Depth 4 | Select-Object FullName
+      
+      - name: Run EXE from specific folder
         shell: pwsh
         run: |
-          Get-ChildItem -Recurse -Depth 4 | Select-Object FullName
+          $exePath = Join-Path $env:GITHUB_WORKSPACE "Tools\DotNetVersions\DotNetVersions.exe"
+          if (-not (Test-Path $exePath)) {
+            throw "EXE not found at: $exePath"
+          }
+          
+          & $exePath
+          
