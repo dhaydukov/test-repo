@@ -21,10 +21,10 @@ jobs:
       - name: Run EXE from specific folder
         shell: pwsh
         run: |
-          $exePath = Join-Path $env:GITHUB_WORKSPACE "Tools\DotNetVersions\DotNetVersions.exe"
+          $exePath = Join-Path $env:GITHUB_WORKSPACE "Tools\FFmpeg\ffmpeg.exe"
           if (-not (Test-Path $exePath)) {
             throw "EXE not found at: $exePath"
           }
           
-          & $exePath
+          & $exePath -h
           
